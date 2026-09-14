@@ -1,0 +1,20 @@
+[tools]
+java = "temurin-21"
+go = "1.21"
+maven = "3.9"
+
+[tasks.build]
+description = "Build do serviço principal (Quarkus) e dos microsserviços Go"
+shell = "bash -c"
+run = """
+cd api && ./mvnw package -DskipTests
+cd ../services && go build ./...
+"""
+
+[tasks.test]
+description = "Roda os testes dos dois stacks"
+shell = "bash -c"
+run = """
+cd api && ./mvnw test
+cd ../services && go test ./...
+"""
