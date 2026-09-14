@@ -21,6 +21,10 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Dar permissão de execução ao mvnw
+        working-directory: api
+        run: chmod +x mvnw
+
       - name: Build com Maven wrapper
         working-directory: api
         run: ./mvnw package -DskipTests -B
@@ -39,7 +43,7 @@ jobs:
 
       - name: Build
         working-directory: services
-        run: go build ./...
+        run: go build -o /dev/null ./...
 
       - name: Test
         working-directory: services
