@@ -135,14 +135,23 @@ As responsabilidades serão distribuídas conforme as necessidades de cada sprin
 ### 8.2 Estrutura do monorepo
 
 RPGManagerWeb2/
+
 ├── api/ # Serviço principal (Quarkus)
+
 ├── services/ # Serviço Go (ai-suggester)
+
 ├── protos/ # Contratos gRPC/protobuf (se aplicável)
+
 ├── docs/ # Documentação do projeto
+
 ├── .github/
+
 │ └── workflows/ # CI (GitHub Actions)
+
 ├── docker-compose.yml # Infra local (Postgres)
+
 ├── mise.toml # Ferramentas e tasks
+
 └── README.md
 
 
