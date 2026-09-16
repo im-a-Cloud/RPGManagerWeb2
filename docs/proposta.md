@@ -1,80 +1,89 @@
-# Proposta — RPG-Manager
+# Relatório — RPG-Manager
 
-Documento de proposta da Sprint 0 da disciplina DIM0547.
+## 1. Visão do Produto
 
----
+O **RPG-Manager** é um aplicativo de gerenciamento de fichas de personagem para **Dungeons & Dragons 5ª Edição (D&D 5e)**, voltado para **jogadores**. O sistema facilita a criação, edição e consulta de personagens, automatizando cálculos que normalmente são feitos manualmente modificadores de atributos, bônus de perícia/proficiência, Classe de Armadura (CA), iniciativa e Pontos de Vida (PV).
 
-## 1. Visão do produto
+Como diferencial de outras plataformas como Roll20 e Foundry, o RPG-Manager usa **Inteligência Artificial** para sugerir combinações de **classe e raça** e gerar um **pequeno guia** de como jogar com o personagem sugerido. A IA atua como assistente à criação: ajuda iniciantes a lidar com a grande quantidade de opções e permite que veteranos saiam da zona de conforto ou superem bloqueios criativos, ou em casos comuns á ambos onde o jogador não sabe como transformar sua ideia em um personagem que encaixe nas regras — **sem substituir a decisão do jogador**, apenas filtrando alternativas, útil para aqueles que não tem amigos/mestres veteranos que possam guia-lo.
 
-Para **jogadores de D&D 5e**
-Que **precisam de um site para criar e gerenciar múltiplas fichas de personagem**
-O **RPG-Manager** é uma **API de edição de fichas de D&D 5e**
-Que **permite a criação de vários personagens diferentes, com cálculos automáticos das regras**
-Diferente de **sites e aplicativos como Roll20, Foundry, Critical Role, 5eTools**
-Nosso aplicativo **faz os cálculos automaticamente e tem opção de IA para sugerir personagens (classe + raça) e gerar um pequeno guia de como jogar com eles**.
+### 1.1 Público-alvo
 
-A sugestão por IA aceita tanto conceitos amplos — *"quero um personagem conjurador para ser suporte"* — quanto pedidos específicos — *"quero um personagem com alto dano físico, da raça X, que usa a arma Y, e estou aberto a multiclasse"*.
+Jogadores de D&D 5e, especialmente **iniciantes** que precisam de apoio para escolher e entender o personagem, e **veteranos** que querem experimentar combinações novas.
 
----
+### 1.2 Problema
 
-## 2. Definição do MVP
+A ficha de D&D 5e envolve muitos valores derivados que precisam permanecer consistentes entre si (atributos, modificadores, perícias, CA, iniciativa, PV, magias, itens). Além disso, iniciantes têm dificuldade para escolher uma combinação de raça e classe e para entender como usar as características do personagem em jogo.
 
-O MVP é o escopo mínimo que entrega valor real ao usuário. Declaramos explicitamente o que fica **dentro** e o que fica **fora**.
+### 1.3 Hipótese de valor
 
-| No MVP | Fora do MVP |
-|---|---|
-| CRUD de fichas de personagem (criação, edição, exclusão) | Rolagem de dados integrada e histórico de sessões |
-| Cálculo automático de modificadores, perícias, CA, iniciativa e PV | Multiclase (multiclassing) e talentos opcionais |
-| Cadastro de raça, classe, antecedente e nível (progressão básica) | Homebrew (criação de magias, itens e raças customizadas) |
-| Catálogo de magias, itens e condições consultável (somente leitura) | Exportação em PDF, impressão e integração com VTTs (Roll20, Foundry) |
-| Autenticação e perfil de jogador | Compartilhamento de fichas entre usuários ou mesas |
-| **Sugestão de personagem por IA (classe + raça) a partir de um tema livre** | **Sugestão de build completa (atributos, perícias, magias otimizadas)** |
-| **Guia curto gerado por IA de como jogar com o personagem sugerido** | **IA que cria fichas inteiras automaticamente ou conversa em tempo real** |
-| Cache das consultas mais frequentes ao catálogo e das sugestões de IA | Recomendação personalizada com base em histórico do usuário |
-
-### Hipótese de valor
-
-> *Acreditamos que **jogadores de D&D 5e, especialmente os iniciantes**, vão **usar a feature de sugestão por IA para escolher classe e raça e receber um guia rápido de como jogar** porque **ela diminui a dificuldade de traduzir um conceito de personagem para as regras e elimina a paralisia de escolha diante de tantas opções**, dando um ponto de partida concreto. Isso permite começar a jogar mais rápido e com menos insegurança sobre as regras — e também atrai veteranos que querem testar algo novo.*
+> *Acreditamos que **jogadores de D&D 5e** vão **usar o RPG-Manager para criar, editar e consultar suas fichas** porque **a automação dos cálculos, o catálogo de informações e o auxílio por IA tornam o processo de preparação mais simples**, permitindo começar a jogar mais rápido e com menos insegurança sobre as regras.*
 
 ---
 
-## 3. Backlog inicial
+## 2. MVP
 
-Backlog completo no GitHub Projects do repositório: **[PREENCHER link do GitHub Projects]**
+### 2.1 Dentro do escopo
 
-Mínimo de 5 itens, ao menos 3 estimados, todos priorizados. Formato: **como [papel], quero [ação] para [benefício]**.
+- Criação e edição de ficha de personagem
+- Cadastro das informações básicas (nome, raça, classe, nível, atributos)
+- Cálculo automático de modificadores, perícias, CA, iniciativa e PV
+- Consulta/Adição de magias, itens e condições
+- **Sugestão de personagem por IA** (classe + raça) a partir de um tema livre
+- **Guia curto gerado por IA** de como jogar com o personagem sugerido
 
-P1 é essencial ao MVP, P2 é importante, P3 é desejável.
+### 2.2 Fora do escopo
 
-| Prio | História | Critérios de aceitação | Sprint |
+Gerenciamento de campanhas, sistema de combate(um simulador com monstros de DnD), mapas, chat entre jogadores/narradores, sistema de mestre, multiplayer em tempo real, criação de regras próprias (homebrew), integração com VTTs(plataformas digitais que permitem jogar RPG de mesa à distância), automação da sessão(rolamento de dados e retornar se foi um sucesso ou não).
+
+### 2.3 Fluxo principal
+
+1. Jogador cria a ficha e define raça, classe, nível e atributos.
+2. O sistema calcula os valores derivados (modificadores, perícias, CA, iniciativa, PV).
+3. O jogador insere magias, itens e habilidades.
+4. Opcionalmente, o jogador solicita uma sugestão por IA, que retorna classe + raça e um guia curto.
+
+---
+
+## 3. Backlog
+
+Backlog completo no GitHub Projects: **https://github.com/users/im-a-Cloud/projects/1**
+
+| ID | História | Prioridade | Estimativa |
 |---|---|---|---|
-| P1 | Como jogador, quero criar e editar minha ficha de personagem para ter meus personagens organizados em um só lugar | CRUD de ficha; campos de raça, classe, antecedente e nível; validação dos campos obrigatórios | 1 |
-| P1 | Como jogador, quero que o app calcule automaticamente modificadores, perícias, CA, iniciativa e PV para não errar ou recalcular na hora da sessão | Cálculos conforme D&D 5e; recálculo ao alterar atributos ou nível; valores exibidos na ficha | 1 |
-| P1 | Como jogador, quero consultar um catálogo de magias, itens e condições para tirar dúvidas durante a criação da ficha | Catálogo somente leitura; busca por nome; paginado; dados vindos do SRD | 2 |
-| P1 | Como jogador, quero receber sugestões de classe e raça a partir de um tema livre para superar a paralisia de escolha | Entrada de texto livre; retorno de classe + raça justificadas; sugestão validada contra as regras | 2 |
-| P2 | Como jogador iniciante, quero um guia curto de como jogar com o personagem sugerido para começar com menos insegurança | Guia gerado por IA com papel, pontos fortes e dicas de uso; limite de tamanho; texto em português | 3 |
-| P2 | Como jogador, quero me autenticar para que minhas fichas fiquem salvas e acessíveis só por mim | JWT com refresh; rotas de ficha protegidas; ficha vinculada ao usuário logado | 3 |
+| US01 | Como jogador, quero criar uma ficha de personagem para registrar meu personagem de D&D 5e | P1 | 5 |
+| US02 | Como jogador, quero definir raça, classe, nível e atributos para configurar meu personagem | P1 | 5 |
+| US03 | Como jogador, quero que o sistema calcule automaticamente os modificadores e valores derivados da ficha para evitar cálculos manuais | P1 | 5 |
+| US04 | Como jogador, quero consultar magias para encontrar rapidamente informações necessárias durante uma sessão | P1 | 5 |
+| US05 | Como jogador, quero consultar itens e condições para acessar informações relevantes durante o jogo | P2 | 3 |
+| US06 | Como jogador, quero editar minha ficha para manter as informações do personagem atualizadas | P1 | 3 |
+| US07 | Como jogador, quero receber sugestões de raça e classe geradas por IA para facilitar a criação de um personagem | P1 | 5 |
+| US08 | Como jogador, quero receber um guia curto de como jogar com o personagem sugerido para entender melhor suas características | P2 | 3 |
+
+**Prioridades:** P1 — essencial ao MVP; P2 — importante; P3 — desejável.
 
 ---
 
-## 4. Entidades principais do domínio
+## 4. Entidades do Domínio
 
 | Entidade | Descrição | Atributos principais |
 |---|---|---|
-| **Usuário** | Dono das fichas; autentica-se no sistema | id, nome, e-mail, senha (hash), data de criação |
-| **Ficha (Personagem)** | Personagem de D&D 5e criado pelo jogador | id, nome, raça, classe, antecedente, nível, atributos (FOR, DES, CON, INT, SAB, CAR), PV, CA, iniciativa, perícias, inventário, magias |
-| **Raça** | Raça disponível no SRD | id, nome, bônus de atributo, traços, velocidade |
-| **Classe** | Classe disponível no SRD | id, nome, dado de vida, proficiências, características por nível |
-| **Antecedente** | Antecedente do personagem | id, nome, perícias concedidas, idiomas |
-| **Magia** | Magia consultável no catálogo | id, nome, nível, escola, tempo de conjuração, alcance, duração, descrição |
-| **Item** | Item consultável no catálogo | id, nome, tipo, peso, valor, descrição |
-| **Sugestão de IA** | Resultado gerado pela IA a partir de um tema livre | id, usuário, tema informado, classe sugerida, raça sugerida, justificativa, guia, data |
+| **Personagem** | Entidade central; representa a ficha do jogador | nome, raça, classe, nível, atributos, modificadores, perícias, CA, iniciativa, PV, magias, itens |
+| **Raça** | Raça disponível no SRD | nome, bônus de atributo, traços, velocidade |
+| **Classe** | Classe escolhida pelo personagem | nome, dado de vida, proficiências, características por nível |
+| **Magia** | Magia consultável no catálogo | nome, nível, escola, tempo de conjuração, alcance, duração, descrição |
+| **Item** | Item ou equipamento consultável | nome, tipo, peso, valor, descrição |
+| **Condição** | Condição de status (ex.: envenenado, caído) | nome, descrição, efeitos |
+| **Sugestão de IA** | Resultado gerado pela IA | tema informado, classe sugerida, raça sugerida, justificativa, guia, data |
+
+**Relações principais:** Personagem possui Raça, Classe, Magias e Itens; possui valores calculados (modificadores, perícias, CA, iniciativa, PV). A IA sugere Classe + Raça e gera um Guia curto.
 
 ---
 
-## 5. Decisão: Java com Quarkus
+## 5. Decisão da Stack
 
-### Justificativa
+O serviço principal será desenvolvido em **Java com Quarkus**.
+
+### 5.1 Justificativa
 
 | Critério | Como Quarkus + Java atende |
 |---|---|
@@ -83,54 +92,70 @@ P1 é essencial ao MVP, P2 é importante, P3 é desejável.
 | **Mercado e ecossistema** | Java consolidado no mercado; Quarkus em ascensão em cloud-native; ecossistema maduro + extensões oficiais |
 | **Diferenciação didática** | Stack menos usual que Spring Boot, expõe paradigmas modernos sem sacrificar produtividade |
 
-Optamos por **Java com Quarkus** por familiaridade da equipe com Java e com o ecossistema Spring. Quarkus compartilha vários conceitos com o Spring (injeção de dependência, RESTEasy/JAX-RS, anotações, build com Maven) e introduz ferramentas novas como **build-time processing**, **extensões nativas** e **programação reativa com Mutiny**. Isso reduz a curva de aprendizado sem abrir mão de ganhos técnicos e didáticos.
-
-### Consequências
-
-- Serviço principal concentra **regras de domínio, persistência, autenticação e orquestração**.
-- Uso de **Panache** para persistência, **RESTEasy Reactive** para API, **OIDC/JWT** para autenticação.
-- Build-time otimizado, com possibilidade futura de native image via GraalVM.
+Quarkus compartilha vários conceitos com o Spring (injeção de dependência, RESTEasy/JAX-RS, anotações, build com Maven) e introduz ferramentas novas como build-time processing, extensões nativas e programação reativa com Mutiny. A stack atende ao domínio por oferecer **tipagem forte** para as regras de D&D 5e, **ecossistema maduro** para persistência e segurança, e **boa integração** com o serviço Go e com o componente de IA.
 
 ---
 
-## 6. Divisão de responsabilidades entre o serviço principal e Go
+## 6. Divisão com o Serviço Go
 
-| Vai para o serviço principal (Quarkus) | Vai para um microsserviço Go |
-|---|---|
-| Entidades de domínio e suas regras (ficha, atributos, perícias, magias, inventário) | Coleta e integração com sistemas externos (SRD, APIs de magias/itens/monstros) |
-| Persistência e migrações (fichas, usuários, sugestões geradas) | Processamento em lote ou agendado (importação em massa do SRD, recálculo periódico) |
-| Autenticação e autorização (dono da ficha) | Trabalho concorrente de I/O intensivo (sincronização de várias fontes em paralelo) |
-| Orquestração dos casos de uso (criar, editar, validar, versionar ficha) | **Integração com o provedor de IA** (chamadas ao LLM, streaming, cache, retry e fallback) |
-| Regras de negócio que validam sugestões da IA contra as regras de D&D 5e | Cache e pré-computação (tabelas de referência, magias, condições, resultados frequentes) |
+### 6.1 Serviço principal (Quarkus)
 
-### Racional
+Responsável pelo núcleo do sistema e pelo domínio: gerenciamento das fichas, regras de negócio, raça e classe, atributos, cálculo dos valores derivados, magias, itens, condições, persistência, autenticação e exposição da API principal.
 
-- O **serviço principal** concentra o que é **rico em regras de negócio e consistência transacional** — onde o ecossistema Java/Quarkus brilha (JPA/Panache, validação, segurança, injeção de dependência). As regras de D&D 5e são complexas e exigem testes robustos e tipagem forte. É aqui que a **sugestão gerada pela IA é validada** antes de chegar ao usuário.
-- Os **microsserviços Go** ficam com o que é **concorrente, I/O-bound ou periódico** — cenários em que a leveza, o baixo consumo de memória e o modelo de concorrência (goroutines) do Go trazem ganho real. A **integração com o provedor de IA** se encaixa aqui: chamadas HTTP a um LLM são I/O-bound, podem ser paralelizadas, beneficiam-se de cache e exigem timeout/retry controlados.
-- Essa separação **isola o risco da IA**: se o provedor cair ou mudar de contrato, o serviço principal continua funcionando (CRUD, cálculos, catálogo) e apenas a feature de sugestão degrada.
-- **Evita o anti-padrão de "microsserviço por moda"**: cada serviço Go existe porque resolve um problema específico (integração, lote, IA), e não porque dividimos o domínio arbitrariamente.
+### 6.2 Serviço Go
 
-### Estrutura do monorepo
+Responsável por tarefas com características técnicas diferentes: coleta e integração com fontes externas (SRD, APIs de magias/itens), processamento em lote ou agendado, operações de I/O concorrente, cache e pré-computação, e **integração com o provedor de IA** (chamadas ao LLM, streaming, retry e fallback).
 
+### 6.3 Integração com IA
 
-RPG-Manager/
+A IA recebe o tema ou preferências do jogador, sugere uma combinação de **classe + raça** e gera um **guia curto** de como jogar. A IA atua como assistente à criação — **não é responsável pelas regras fundamentais do domínio**. As regras e cálculos da ficha permanecem sob responsabilidade da aplicação, garantindo que os valores sejam determinados pela lógica do RPG-Manager.
+
+### 6.4 Justificativa da divisão
+
+O serviço principal concentra o domínio e as operações que exigem consistência das informações da ficha. O serviço Go fica com tarefas de processamento, I/O, concorrência, cache e integração — incluindo as chamadas ao provedor de IA, que são I/O-bound e se beneficiam do modelo de concorrência leve do Go (goroutines). Essa separação **isola o risco da IA**: se o provedor cair, o serviço principal continua funcionando e apenas a feature de sugestão degrada.
+
+---
+
+## 7. Equipe
+
+| Integrante | Matrícula | Responsabilidades |
+|---|---|---|
+| Álvaro Prudêncio Araújo | 20240078220 | Todas |
+
+As responsabilidades serão distribuídas conforme as necessidades de cada sprint, mantendo a colaboração da equipe em desenvolvimento, testes, integração, documentação e manutenção.
+
+---
+
+## 8. Coorte e Integração
+
+### 8.1 Coorte de apresentação
+
+[2026.2, turma DIM0547]
+
+### 8.2 Estrutura do monorepo
+
+RPGManagerWeb2/
 ├── api/ # Serviço principal (Quarkus)
-├── services/ # Microsserviços Go
-│ └── ai-suggester/ # Integração com provedor de IA
+├── services/ # Serviço Go (ai-suggester)
 ├── protos/ # Contratos gRPC/protobuf (se aplicável)
-├── docs/
-│ └── proposta.md # Este documento
+├── docs/ # Documentação do projeto
+├── .github/
+│ └── workflows/ # CI (GitHub Actions)
 ├── docker-compose.yml # Infra local (Postgres)
 ├── mise.toml # Ferramentas e tasks
 └── README.md
 
-## 7. Equipe
 
-| Nome | Matrícula | Papel |
-|Meu Nome|2469|TODOS|
+### 8.3 Comunicação entre os componentes
 
+A comunicação entre o serviço principal e o serviço Go será via **REST** (HTTP/JSON). A integração mantém separação clara entre as responsabilidades, evitando que o serviço Go assuma as regras centrais do domínio.
 
-## 8. Coorte e integração
+### 8.4 Integração contínua
 
-- **Coorte de apresentação:** [ 2026.2, turma DIM0547]
-- **Integração com outra disciplina:** ["Não há integração com outra disciplina no momento."]
+O projeto usa **GitHub Actions** para verificar automaticamente os dois stacks. O pipeline roda em eventos de **push** e **pull request** na branch `main`, executando o build do serviço principal (Java/Quarkus) e do serviço Go. O objetivo é garantir que alterações não quebrem a compilação dos componentes. O CI está verde na branch `main`.
+
+---
+
+## Conclusão
+
+O RPG-Manager é uma aplicação focada no gerenciamento de fichas de D&D 5e, centralizando informações e automatizando cálculos. O MVP prioriza criação e edição de fichas, cálculo automático de valores derivados e consulta a catálogos, tendo como diferencial a **sugestão de personagens por IA** e a geração de um **guia curto**. A arquitetura separa o serviço principal (domínio, Quarkus) do serviço Go (integração, I/O, IA), permitindo que cada componente seja desenvolvido conforme o tipo de trabalho que executa. O backlog organiza o desenvolvimento em histórias priorizadas, e o CI no GitHub Actions garante que os dois stacks permaneçam compilando.
