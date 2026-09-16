@@ -130,7 +130,7 @@ As responsabilidades serão distribuídas conforme as necessidades de cada sprin
 
 ### 8.1 Coorte de apresentação
 
-[2026.2, turma DIM0547]
+2026.2, turma DIM0547
 
 ### 8.2 Estrutura do monorepo
 
