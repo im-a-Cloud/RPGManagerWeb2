@@ -20,16 +20,19 @@ O projeto calcula automaticamente modificadores, perícias, CA, iniciativa e PV,
 ---
 
 ## Estrutura do monorepo
+
+```
 RPG-Manager/
-├── api/ # Serviço principal (Quarkus)
-├── services/ # Microsserviços Go
-│ └── ai-suggester/ # Integração com provedor de IA
-├── protos/ # Contratos gRPC/protobuf (se aplicável)
+├── api/                  # Serviço principal (Quarkus)
+├── services/             # Microsserviços Go
+│   └── ai-suggester/     # Integração com provedor de IA
+├── protos/               # Contratos gRPC/protobuf (se aplicável)
 ├── docs/
-│ └── proposta.md # Documento de proposta da Sprint 0
-├── docker-compose.yml # Infra local (Postgres)
-├── mise.toml # Ferramentas e tasks
+│   └── proposta.md       # Documento de proposta da Sprint 0
+├── docker-compose.yml    # Infra local (Postgres)
+├── mise.toml             # Ferramentas e tasks
 └── README.md
+```
 
 
 ---
@@ -76,6 +79,6 @@ go run .
 
 
 
-Licença
+## Licença
 Projeto acadêmico desenvolvido para a disciplina DIM0547. Uso educacional.
 
